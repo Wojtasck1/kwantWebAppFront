@@ -19,17 +19,17 @@ export class AppComponent {
               private router: Router) {
 
     this.translateService = translateService;
-    this.translateService.setDefaultLang('en');
-    this.translateService.use('en');
+    this.translateService.setDefaultLang('pl');
+    this.translateService.use('pl');
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         switch (event.urlAfterRedirects) {
           case '/':
-            this.title.setTitle('Angular Example App');
+            this.title.setTitle('Kwant App');
             this.meta.updateTag({
               name: 'description',
-              content: 'Angular 4 Example app with Angular CLI, Angular Material and more'
+              content: 'Angular 4 app with Angular CLI, Angular Material and more'
             });
             break;
           case '/' + AppConfig.routes.heroes:
@@ -37,6 +37,20 @@ export class AppComponent {
             this.meta.updateTag({
               name: 'description',
               content: 'List of super-heroes'
+            });
+            break;
+          case '/' + AppConfig.routes.cars:
+            this.title.setTitle('Cars list');
+            this.meta.updateTag({
+              name: 'description',
+              content: 'List of tasks'
+            });
+            break;
+          case '/' + AppConfig.routes.usrs:
+            this.title.setTitle('users list');
+            this.meta.updateTag({
+              name: 'description',
+              content: 'List of users' 
             });
             break;
         }

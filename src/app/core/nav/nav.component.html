@@ -9,6 +9,12 @@
             <md-icon>public</md-icon>
         </button>
         <md-menu #menu="mdMenu">
+            <button md-menu-item (click)="changeLanguage('pl')">
+                <md-icon>flag</md-icon>
+                <span>
+                {{ 'polish' | translate }}
+            </span>
+            </button>
             <button md-menu-item (click)="changeLanguage('en')">
                 <md-icon>flag</md-icon>
                 <span>
@@ -28,9 +34,6 @@
             </span>
             </button>
         </md-menu>
-        <a class="image-icon" href="{{appConfig.repositoryURL}}" target="_blank">
-            <img src="assets/images/github-circle-white-transparent.svg">
-        </a>
     </nav>
     <section class="progress-bar">
         <md-progress-bar

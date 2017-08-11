@@ -8,7 +8,10 @@ import {AppComponent} from './app.component';
 const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: '', component: HeroTopComponent},
-  {path: AppConfig.routes.heroes, loadChildren: './heroes/heroes.module#HeroesModule'}
+  {path: AppConfig.routes.heroes, loadChildren: './heroes/heroes.module#HeroesModule'},
+  {path: AppConfig.routes.cars, loadChildren: './cars/cars.module#CarsModule'},
+  {path: AppConfig.routes.tasks, loadChildren: './tasks/tasks.module#TasksModule'},
+  {path: AppConfig.routes.users, loadChildren: './users/users.module#UsersModule'}, 
 ];
 
 @NgModule({

@@ -6,13 +6,16 @@ export let APP_CONFIG = new OpaqueToken('app.config');
 
 export const AppConfig: IAppConfig = {
   routes: {
-    heroes: 'heroes'
-  },
-  endpoints: {
+    heroes: 'heroes',
+    tasks: 'tasks',
+    cars: 'cars',
+    users: 'users',
+  }, 
+  endpoints: { 
     heroes: 'https://nodejs-example-app.herokuapp.com/heroes'
   },
   votesLimit: 3,
-  topHeroesLimit: 4,
+  topHeroesLimit: 9,
   snackBarDuration: 3000,
   repositoryURL: 'https://github.com/Ismaestro/angular4-example-app'
 };

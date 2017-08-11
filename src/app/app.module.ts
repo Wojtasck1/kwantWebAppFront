@@ -15,16 +15,18 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from './app.translate.factory';
 import {HeroTopComponent} from './heroes/hero-top/hero-top.component';
 import {HeroService} from './heroes/shared/hero.service';
+// import { FormatPipe } from './shared/pipe/format.pipe';
+// import { OrderByPipe } from './shared/pipe/orderBy.pipe';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
+    FormsModule, 
+    HttpClientModule, 
+    TranslateModule.forRoot({ 
+      loader: { 
+        provide: TranslateLoader, 
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
@@ -35,7 +37,9 @@ import {HeroService} from './heroes/shared/hero.service';
   ],
   declarations: [
     AppComponent,
-    HeroTopComponent
+    HeroTopComponent,
+    // FormatPipe,
+    // OrderByPipe,
   ],
   providers: [
     {provide: APP_CONFIG, useValue: AppConfig},

@@ -18,9 +18,7 @@ export class NavComponent {
 
   private translateService: TranslateService;
 
-  constructor(@Inject(APP_CONFIG) appConfig: IAppConfig,
-              private progressBarService: ProgressBarService,
-              translateService: TranslateService) {
+  constructor(@Inject(APP_CONFIG) appConfig: IAppConfig, private progressBarService: ProgressBarService, translateService: TranslateService) {
     this.appConfig = appConfig;
     this.translateService = translateService;
     this.loadMenus();
@@ -34,13 +32,16 @@ export class NavComponent {
     this.translateService.use(language).subscribe(() => {
       this.loadMenus();
     });
-  }
+  } 
 
   private loadMenus(): void {
-    this.translateService.get(['home', 'heroesList'], {}).subscribe((texts: string) => {
+    this.translateService.get(['home', 'heroesList', 'cars', 'tasks' , 'users'], {}).subscribe((texts: string) => {
       this.menuItems = [
         {link: '/', name: texts['home']},
-        {link: '/' + AppConfig.routes.heroes, name: texts['heroesList']}
+        {link: '/' + AppConfig.routes.heroes, name: texts['heroesList']},
+        {link: '/' + AppConfig.routes.cars, name: texts['cars']},
+        {link: '/' + AppConfig.routes.tasks, name: texts['tasks']}, 
+        {link: '/' + AppConfig.routes.users, name: texts['users']}
       ];
     });
   }
