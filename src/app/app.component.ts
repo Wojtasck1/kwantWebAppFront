@@ -49,7 +49,7 @@ export class AppComponent {
           case '/' + AppConfig.routes.usrs:
             this.title.setTitle('users list');
             this.meta.updateTag({
-              name: 'description',
+              name: 'description', 
               content: 'List of users' 
             });
             break;
