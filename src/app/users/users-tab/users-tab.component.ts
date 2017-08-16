@@ -1,6 +1,11 @@
-import { Component , Input} from '@angular/core';
-import { OrderByPipe } from './../../shared/pipe/orderBy.pipe';
-import { FormatPipe } from './../../shared/pipe/format.pipe';
+import {Component, ViewChild} from '@angular/core';
+import {User} from '../shared/user.model';
+import {UserService} from '../shared/user.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MdDialog} from '@angular/material';
+import {AppConfig} from '../../config/app.config';
+import {Router} from '@angular/router';
+import {LoggerService} from '../../core/logger.service';
 
 @Component({
   selector: 'app-users-tab',
@@ -9,75 +14,61 @@ import { FormatPipe } from './../../shared/pipe/format.pipe';
 })
 export class UsersTabComponent {
 
-  //@Input() columns: any[];
-  @Input() data: any[];
-  @Input() sort: any;
-  
-  selectedClass(columnName): string{
-    return columnName == this.sort.column ? 'sort-' + this.sort.descending : "false";
-  }
-  
-  changeSorting(columnName): void{ 
-    var sort = this.sort;
-    if (sort.column == columnName) {
-      sort.descending = !sort.descending;
-    } else {
-      sort.column = columnName;
-      sort.descending = false;
-    }
-  }
-  
-  convertSorting(): string{
-    return this.sort.descending ? '-' + this.sort.column : this.sort.column;
+  public users: User[];
+
+  constructor(
+    private userService: UserService, 
+    private dialog: MdDialog, 
+    private ruter: Router,
+    private FormBuilder: FormBuilder) {
+    this.userService.getAllUsers()
   }
 
-  rows: any[] = [
-    {
-      Name: 'Data 1',
-      Amount: 100.23,
-      Date: 1433588216000
-    },
-    {
-      Name: 'Data 2',
-      Amount: 0.875623,
-      Date: 1432387616000
-    },
-    {
-      Name: 'Data 3',
-      Amount: .010123,
-      Date: 1461820116000
-    },
-    {
-      Name: 'Data 4',
-      Amount: 1873.02301,
-      Date: 1423128616000
-    },
-    {
-      Name: 'Data 5',
-      Amount: -93,
-      Date: 1439220116000
-    }
-  ];
-  columns: any[] = [
-    {
-      display: 'Column 1', //The text to display
-      variable: 'Name', //The name of the key that's apart of the data array
-      filter: 'text' //The type data type of the column (number, text, date, etc.)
-    },
-    {
-      display: 'Column 2', //The text to display
-      variable: 'Amount', //The name of the key that's apart of the data array
-      filter: 'decimal : 1.0-2' //The type data type of the column (number, text, date, etc.)
-    },
-    {
-      display: 'Column 3', //The text to display
-      variable: 'Date', //The name of the key that's apart of the data array
-      filter: 'dateTime' //The type data type of the column (number, text, date, etc.)
-    }
-  ];
-  sorting: any = {
-    column: 'Name', //to match the variable of one of the columns
-    descending: false
-  };
 
+
+  ///////////////////////////////////////////////
+  title = 'Angular 2 CRUD operation with an Array';
+  employees = [
+    { name: "Sikandar", position: "Programmer" },
+    { name: "Alex", position: "Designer" },
+    { name: "Maria", position: "Manager" }
+  ];
+  model: any = {};
+  model2: any = {};
+  msg: any = "";
+  addEmployee() {
+    this.employees.push(this.model);
+    this.model = {};
+    this.msg = "Record is successfully added..... ";
+
+  }
+  deleteEmployee(i) {
+    this.employees.splice(i, 1);
+    this.msg = "Record is successfully deleted..... ";
+
+  }
+  myValue;
+  editEmployee(k) {
+    this.model2.name = this.employees[k].name;
+    this.model2.position = this.employees[k].position;
+    this.myValue = k;
+
+  }
+  updateEmployee() {
+    let k = this.myValue;
+    for (let i = 0; i < this.employees.length; i++) {
+      if (i == k) {
+        this.employees[i] = this.model2;
+        this.model2 = {};
+        this.msg = "Record is successfully updated..... ";
+      }
+
+    }
+
+
+
+  }
+  clickMe() {
+    this.msg = "";
+  }
 }
