@@ -1,3 +1,4 @@
+
 import {Component, ViewChild} from '@angular/core';
 import {User} from '../shared/user.model';
 import {UserService} from '../shared/user.service';
@@ -64,9 +65,6 @@ export class UsersTabComponent {
       }
 
     }
-
-
-
   }
   clickMe() {
     this.msg = "";

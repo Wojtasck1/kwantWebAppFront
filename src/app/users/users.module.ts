@@ -5,7 +5,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared/modules/shared.module';
 
-// import {BrowserModule} from '@angular/platform-browser';
 import { UsersComponent } from './users.component';
 import { UserDetailComponent} from './user-detail/user-detail.component';
 import { UsersTopComponent } from './users-top/users-top.component';
@@ -16,11 +15,7 @@ import { HttpModule } from '@angular/http';
 @NgModule({
   imports: [
     UsersRoutingModule,
-    // BrowserModule,
-    CommonModule,
-    HttpModule,
-    FormsModule,
-  ], 
+  ],
   declarations: [
     UsersComponent,  
     UsersTopComponent,  
