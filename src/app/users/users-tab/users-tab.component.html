@@ -1,78 +1,40 @@
-<div class="container">
-   <div class="row">
-    <div class="col-md-8">
-      <h1>{{title}}</h1>
-    </div>
-    <!-- <div class="col-md-4">
-      <div class="alert alert-success alert-dismissable" *ngIf="msg">
-        <a href="#" class="close" (click)="clickMe()">&times;</a> {{msg}}
-      </div>
-    </div> -->
-  </div>
-  <div class="clearfix"></div>
-  <hr>
-  <h2>Create data:</h2>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="name">Name:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model.name" placeholder="Enter your name">
-      </div>
-    </div>
-     <div class="form-group">
-      <label class="control-label col-sm-2" for="position">Position:</label>
-      <!-- <div class="col-sm-10">
-        <input type="text" class="form-control" id="position" name="position" [(ngModel)]="  employees = [
-.position" placeholder="Enter your position">
-      </div> -->
-    </div> 
+<div class="example-container mat-elevation-z8">
+  <md-table #table [dataSource]="dataSource" mdSort>
 
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" (click)="addEmployee()">Save</button>
-      </div>
-    </div>
-  </form> 
-  <h2>Read data & (Delete data):</h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th width=400>Name</th>
-        <th width=400>Position</th>
-        <th width=250>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users; let i=index">
-        <td>{{user.name}}</td>
-        <td>{{user.surname}}</td>
-        <td>
-          <a class="btn btn-success" (click)="editEmployee(i)">Edit</a>
-          <a class="btn btn-danger" (click)="deleteEmployee(i)">Delete</a>
-        </td>
-      </tr>
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
 
-    </tbody>
-  </table>
-  <h2>Update data:</h2>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="name">Name:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="model2.name" placeholder="Enter your name">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="position">Position:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="position" name="position" [(ngModel)]="model2.position" placeholder="Enter your position">
-      </div>
-    </div>
+    <!-- ID Column -->
+    <ng-container cdkColumnDef="userId">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> ID </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.id}} </md-cell>
+    </ng-container>
 
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default" (click)="updateEmployee()">Update</button>
-      </div>
-    </div>
-  </form> 
+    <!-- Progress Column -->
+    <ng-container cdkColumnDef="progress">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Progress </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.progress}}% </md-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="userName">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Name </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container cdkColumnDef="color">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Color </md-header-cell>
+      <md-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.color}} </md-cell>
+    </ng-container>
+
+        <!-- icon Column -->
+    <ng-container cdkColumnDef="color">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Actions </md-header-cell>
+      <md-cell *cdkCellDef="let row"> <md-icon>home</md-icon> </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
 </div>
