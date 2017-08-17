@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared/modules/shared.module';
@@ -15,6 +16,9 @@ import { HttpModule } from '@angular/http';
 @NgModule({
   imports: [
     UsersRoutingModule,
+    FormsModule,
+    // BrowserModule,
+    CommonModule
   ],
   declarations: [
     UsersComponent,  
@@ -24,7 +28,7 @@ import { HttpModule } from '@angular/http';
   ],
   bootstrap: [UsersTabComponent],
    providers: [
-     UserService
+     UserService 
    ]
 })
 

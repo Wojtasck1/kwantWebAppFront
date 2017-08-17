@@ -1,20 +1,21 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
-import {APP_CONFIG, AppConfig} from './config/app.config';
+import { APP_CONFIG, AppConfig } from './config/app.config';
 
-import {AppRoutingModule} from './app-routing.module';
-import {SharedModule} from './shared/modules/shared.module';
-import {CoreModule} from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/modules/shared.module';
+import { CoreModule } from './core/core.module';
 
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpLoaderFactory} from './app.translate.factory';
-import {HeroTopComponent} from './heroes/hero-top/hero-top.component';
-import {HeroService} from './heroes/shared/hero.service';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpLoaderFactory } from './app.translate.factory';
+import { HeroTopComponent } from './heroes/hero-top/hero-top.component';
+import { HeroService } from './heroes/shared/hero.service';
 // import { FormatPipe } from './shared/pipe/format.pipe';
 // import { OrderByPipe } from './shared/pipe/orderBy.pipe';
 
@@ -22,11 +23,12 @@ import {HeroService} from './heroes/shared/hero.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule, 
-    HttpClientModule, 
-    TranslateModule.forRoot({ 
-      loader: { 
-        provide: TranslateLoader, 
+    FormsModule,
+    CommonModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
@@ -42,7 +44,7 @@ import {HeroService} from './heroes/shared/hero.service';
     // OrderByPipe,
   ],
   providers: [
-    {provide: APP_CONFIG, useValue: AppConfig},
+    { provide: APP_CONFIG, useValue: AppConfig },
     HeroService
   ],
   bootstrap: [AppComponent]

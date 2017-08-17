@@ -25,8 +25,6 @@ export class UsersTabComponent {
     this.userService.getAllUsers()
   }
 
-
-
   ///////////////////////////////////////////////
   title = 'Angular 2 CRUD operation with an Array';
   employees = [
@@ -45,8 +43,8 @@ export class UsersTabComponent {
   }
   deleteEmployee(i) {
     this.employees.splice(i, 1);
-    this.msg = "Record is successfully deleted..... ";
-
+    this.msg = "Record is successfully deleted..... "; 
+ 
   }
   myValue;
   editEmployee(k) {

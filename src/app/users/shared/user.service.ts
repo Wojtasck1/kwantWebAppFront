@@ -40,7 +40,6 @@ export class UserService {
 
   getAllUsers(): Observable<User[]> {
     this.request$.emit('starting');
-    console.log(this.http.get(this.usersUrl));
     return this.http.get(this.usersUrl)
       .map(response => {
         this.request$.emit('finished');
