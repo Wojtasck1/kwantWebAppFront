@@ -37,9 +37,10 @@ export class UserService {
       this.translations = texts;
     });
   }
-
+ 
   getAllUsers(): Observable<User[]> {
     this.request$.emit('starting');
+    console.log(this.usersUrl);
     return this.http.get(this.usersUrl)
       .map(response => {
         this.request$.emit('finished');

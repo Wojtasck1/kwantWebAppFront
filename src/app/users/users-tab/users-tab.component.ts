@@ -1,8 +1,10 @@
-import {Component, ViewChild} from '@angular/core';
-import {DataSource} from '@angular/cdk';
-import {MdSort} from '@angular/material';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+import { Component, ViewChild } from '@angular/core';
+import { DataSource } from '@angular/cdk';
+import { MdPaginator , MdSelect } from '@angular/material';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
+import { User } from './../shared/user.model';
+import { UserService } from './../shared/user.service'
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -13,61 +15,59 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./users-tab.component.css']
 })
 export class UsersTabComponent {
-  displayedColumns = ['userId', 'userName', 'progress', 'color'];
-  exampleDatabase = new ExampleDatabase();
-  dataSource: ExampleDataSource | null;
+  displayedColumns = ['userId', 'name', 'surname', 'email'];
+  private _userService: UserService;
+  usersDatabase = new UsersDatabase(this._userService);
+  dataSource: UsersDataSource | any;
+  users: User[]; 
+  user: User; 
+  //userService: UserService;
 
-  @ViewChild(MdSort) sort: MdSort;
+  @ViewChild(MdPaginator) paginator: MdPaginator;
+
+  constructor(private userService: UserService) {
+    this.userService.getAllUsers().subscribe((users) => {
+      this.users = users.sort((a, b) => {
+        return b.user_id - a.user_id;
+      });
+    });
+  }
 
   ngOnInit() {
-    this.dataSource = new ExampleDataSource(this.exampleDatabase, this.sort);
+    this.dataSource = new UsersDataSource(this.usersDatabase, this.paginator);
+    this.userService.getAllUsers();
   }
-}
 
-/** Constants used to fill up our data base. */
-const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
+  public onEditClick() {
+    console.log(this.users);
+  };
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
+  public onDescClick() {
+    console.log("onDescClick");
+  };
+  public onDeleteClick() {
+    console.log("onDElClick");
+  };
 }
 
 /** An example database that the data source uses to retrieve data for the table. */
-export class ExampleDatabase {
+export class UsersDatabase {
   /** Stream that emits whenever the data has been modified. */
-  dataChange: BehaviorSubject<UserData[]> = new BehaviorSubject<UserData[]>([]);
-  get data(): UserData[] { return this.dataChange.value; }
+  dataChange: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  get data(): User[] { return this.dataChange.value; }
 
-  constructor() {
-    // Fill up the database with 100 users.
-    for (let i = 0; i < 100; i++) { this.addUser(); }
+  private _userService: UserService;
+
+  private getAllUsers() {
+    return this._userService.getAllUsers();
   }
 
-  /** Adds a new user to the database. */
-  addUser() {
-    const copiedData = this.data.slice();
-    copiedData.push(this.createNewUser());
-    this.dataChange.next(copiedData);
-  }
+  constructor(userService: UserService) {
+    userService.getAllUsers().subscribe(data => this.dataChange.next(data));
+   }
 
-  /** Builds and returns a new User. */
-  private createNewUser() {
-    const name =
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-    return {
-      id: (this.data.length + 1).toString(),
-      name: name,
-      progress: Math.round(Math.random() * 100).toString(),
-      color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-    };
+  ngOnInit() {
+    this.getAllUsers();
   }
 }
 
@@ -78,45 +78,32 @@ export class ExampleDatabase {
  * the underlying data. Instead, it only needs to take the data and send the table exactly what
  * should be rendered.
  */
-export class ExampleDataSource extends DataSource<any> {
-  constructor(private _exampleDatabase: ExampleDatabase, private _sort: MdSort) {
+export class UsersDataSource extends DataSource<any> {
+  constructor(private _usersDatabase: UsersDatabase, private _paginator: MdPaginator) {
     super();
   }
 
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<UserData[]> {
+  connect(): Observable<User[]> { 
     const displayDataChanges = [
-      this._exampleDatabase.dataChange,
-      this._sort.mdSortChange,
+      this._usersDatabase.dataChange,
+      this._paginator.page
     ];
 
-    return Observable.merge(...displayDataChanges).map(() => {
-      return this.getSortedData();
-    });
+    return Observable.merge(...displayDataChanges).map((data, page) => {
+      const clonedData = data.slice();
+    // return Observable.merge(...displayDataChanges).map(() => {
+    //   const data = this._usersDatabase.data.slice();
+
+
+
+
+  //   return Observable.merge(...displayDataChanges).map((data, page) => {
+  //     const clonedData = data.slice();
+
+
+      const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+      return data.splice(startIndex, this._paginator.pageSize);
+    })
   }
-
-  disconnect() {}
-
-  /** Returns a sorted copy of the database data. */
-  getSortedData(): UserData[] {
-    const data = this._exampleDatabase.data.slice();
-    if (!this._sort.active || this._sort.direction == '') { return data; }
- 
-    return data.sort((a, b) => {
-      let propertyA: number|string = '';
-      let propertyB: number|string = '';
-
-      switch (this._sort.active) {
-        case 'userId': [propertyA, propertyB] = [a.id, b.id]; break;
-        case 'userName': [propertyA, propertyB] = [a.name, b.name]; break;
-        case 'progress': [propertyA, propertyB] = [a.progress, b.progress]; break;
-        case 'color': [propertyA, propertyB] = [a.color, b.color]; break;
-      }
- 
-      let valueA = isNaN(+propertyA) ? propertyA : +propertyA;
-      let valueB = isNaN(+propertyB) ? propertyB : +propertyB;
-
-      return (valueA < valueB ? -1 : 1) * (this._sort.direction == 'asc' ? 1 : -1);
-    });
-  }
+  disconnect() { }
 }

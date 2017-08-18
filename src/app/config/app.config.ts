@@ -12,7 +12,7 @@ export const AppConfig: IAppConfig = {
     users: 'users',
   }, 
   endpoints: { 
-    heroes: 'https://nodejs-example-app.herokuapp.com/heroes',
+    heroes: 'https://nodejs-example-app.herokuapp.com/heroes', 
     users: 'http://localhost:8080/api/v1/users/',
 
   },

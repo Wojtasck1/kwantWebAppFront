@@ -26,6 +26,7 @@ const heroesRoutes: Routes = [
   ],
   exports: [
     RouterModule
+    
   ]
 })
 

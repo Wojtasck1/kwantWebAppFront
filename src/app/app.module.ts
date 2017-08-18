@@ -40,8 +40,6 @@ import { HeroService } from './heroes/shared/hero.service';
   declarations: [
     AppComponent,
     HeroTopComponent,
-    // FormatPipe,
-    // OrderByPipe,
   ],
   providers: [
     { provide: APP_CONFIG, useValue: AppConfig },

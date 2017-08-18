@@ -5,10 +5,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CarsRoutingModule} from './cars-routing.module';
 import {SharedModule} from '../shared/modules/shared.module';
 
-import {CarsTabComponent} from './cars-tab/cars-tab.component';//, RemoveHeroDialogComponent} from './hero-list/hero-list.component';
-//import {HeroService} from './shared/hero.service';
+import {CarsTabComponent} from './cars-tab/cars-tab.component';
 import {CarDetailComponent} from './car-detail/car-detail.component';
 import {CarsComponent} from './cars.component';
+import { HttpModule } from '@angular/http';
+import { DataSource } from '@angular/cdk';
+import { MdTableModule } from '@angular/material';
+import { MdSortModule , MdIconModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk';
 
 @NgModule({
   imports: [
@@ -16,7 +20,11 @@ import {CarsComponent} from './cars.component';
     FormsModule,
     SharedModule,
     CarsRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MdTableModule,
+    MdSortModule,
+    MdIconModule,
+    CdkTableModule,
   ],
   declarations: [
     CarsComponent,
