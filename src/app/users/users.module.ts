@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { SharedModule } from '../shared/modules/shared.module';
+import { Http, Response } from '@angular/http';
 
 import { UsersComponent } from './users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
@@ -94,8 +95,11 @@ import { CdkTableModule } from '@angular/cdk';
   ],
   bootstrap: [UsersTabComponent],
   providers: [
-    UserService
-  ]
+    UserService,
+    Http,
+    Response,
+  ],
+  
 })
 
 export class UsersModule { }
