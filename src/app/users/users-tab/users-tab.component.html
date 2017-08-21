@@ -14,25 +14,19 @@
 
     <!-- name Column -->
     <ng-container cdkColumnDef="name">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Progress </md-header-cell>
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Name </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
     </ng-container>
 
-     <!-- Name Column 
-    <ng-container cdkColumnDef="userName">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Name </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
-    </ng-container> -->
-
     <!-- surname Column -->
     <ng-container cdkColumnDef="surname">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Name </md-header-cell>
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Surname </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.surname}} </md-cell>
     </ng-container>
 
     <!-- surname Column -->
     <ng-container cdkColumnDef="email">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Name </md-header-cell>
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Email </md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row.email}} </md-cell>
     </ng-container>
     <!-- Color Column -->
@@ -42,14 +36,13 @@
     </ng-container> -->
 
     <!-- icon Column -->
-    <ng-container cdkColumnDef="color">
+    <ng-container cdkColumnDef="Actions">
       <md-header-cell *cdkHeaderCellDef> Actions </md-header-cell>
       <md-cell *cdkCellDef="let row">
         <button (click)="onEditClick()"><md-icon>border_color</md-icon></button>
         <button (click)="onDescClick()"><md-icon>description</md-icon></button>
         <button (click)="onDeleteClick()"><md-icon>delete</md-icon></button>
       </md-cell>
-
     </ng-container>
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
@@ -57,6 +50,6 @@
   </md-table>
 
 
-  <md-paginator #paginator [length]="usersDatabase.data.length" [pageIndex]="0" [pageSize]="25" [pageSizeOptions]="[5, 10, 25, 100]">
+  <md-paginator #paginator [length]="usersDatabase.data.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
   </md-paginator>
 </div>

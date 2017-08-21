@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataSource } from '@angular/cdk';
 import { MdPaginator , MdSelect } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -12,17 +12,17 @@ import 'rxjs/add/operator/map';
 @Component({
   selector: 'app-users-tab',
   templateUrl: './users-tab.component.html',
-  styleUrls: ['./users-tab.component.css']
+  styleUrls: ['./users-tab.component.css'],
+  providers:[UserService]
 })
-export class UsersTabComponent {
+export class UsersTabComponent implements OnInit{
   displayedColumns = ['userId', 'name', 'surname', 'email'];
-  private _userService: UserService;
-  usersDatabase = new UsersDatabase(this._userService);
-  dataSource: UsersDataSource | any;
-  users: User[]; 
+  usersDatabase = new UsersDatabase(this.userService);
+  public dataSource: UsersDataSource | any;
+  public users: User[];
   user: User; 
   //userService: UserService;
-
+  
   @ViewChild(MdPaginator) paginator: MdPaginator;
 
   constructor(private userService: UserService) {
@@ -35,7 +35,9 @@ export class UsersTabComponent {
 
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.usersDatabase, this.paginator);
-    this.userService.getAllUsers();
+     console.log(this.users);
+    // console.log(this.dataSource);
+    //this.userService.getAllUsers();
   }
 
   public onEditClick() {
@@ -58,17 +60,17 @@ export class UsersDatabase {
 
   private _userService: UserService;
 
-  private getAllUsers() {
-    return this._userService.getAllUsers();
-  }
+  // public getAllUsers() {
+  //   return this._userService.getAllUsers();
+  // } 
 
   constructor(userService: UserService) {
-    userService.getAllUsers().subscribe(data => this.dataChange.next(data));
+    userService.getAllUsers().subscribe(data =>this.dataChange.next(data));
    }
 
-  ngOnInit() {
-    this.getAllUsers();
-  }
+  // ngOnInit() {
+  //   this.getAllUsers();
+  // }
 }
 
 /**
@@ -78,7 +80,7 @@ export class UsersDatabase {
  * the underlying data. Instead, it only needs to take the data and send the table exactly what
  * should be rendered.
  */
-export class UsersDataSource extends DataSource<any> {
+export class UsersDataSource extends DataSource<User> {
   constructor(private _usersDatabase: UsersDatabase, private _paginator: MdPaginator) {
     super();
   }
@@ -91,15 +93,6 @@ export class UsersDataSource extends DataSource<any> {
 
     return Observable.merge(...displayDataChanges).map((data, page) => {
       const clonedData = data.slice();
-    // return Observable.merge(...displayDataChanges).map(() => {
-    //   const data = this._usersDatabase.data.slice();
-
-
-
-
-  //   return Observable.merge(...displayDataChanges).map((data, page) => {
-  //     const clonedData = data.slice();
-
 
       const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
       return data.splice(startIndex, this._paginator.pageSize);
