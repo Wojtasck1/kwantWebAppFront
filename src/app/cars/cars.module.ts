@@ -29,14 +29,11 @@ import { CdkTableModule } from '@angular/cdk';
   declarations: [
     CarsComponent,
     CarsTabComponent,
-    //RemoveHeroDialogComponent,
     CarDetailComponent
   ],
   entryComponents: [
-    //RemoveHeroDialogComponent
   ],
   providers: [
-    //HeroService
   ]
 })
 export class CarsModule { }
