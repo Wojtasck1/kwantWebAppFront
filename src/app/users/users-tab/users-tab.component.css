@@ -18,6 +18,13 @@
   overflow: auto;
 }
 
+.mat-column-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  overflow: hidden;
+}
+
 .mat-header-cell .mat-sort-header-sorted {
   color: black;
 }
