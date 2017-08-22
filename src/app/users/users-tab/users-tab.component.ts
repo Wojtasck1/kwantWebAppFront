@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataSource } from '@angular/cdk';
-import { MdPaginator , MdSelect } from '@angular/material';
+import { MdPaginator, MdSelect } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { User } from './../shared/user.model';
@@ -13,16 +13,16 @@ import 'rxjs/add/operator/map';
   selector: 'app-users-tab',
   templateUrl: './users-tab.component.html',
   styleUrls: ['./users-tab.component.css'],
-  providers:[UserService]
+  providers: [UserService]
 })
-export class UsersTabComponent implements OnInit{
-  displayedColumns = ['userId', 'name', 'surname', 'email'];
+export class UsersTabComponent implements OnInit {
+  displayedColumns = ['userId', 'name', 'surname', 'email', 'actions'];
   usersDatabase = new UsersDatabase(this.userService);
   public dataSource: UsersDataSource | any;
   public users: User[];
-  user: User; 
+  user: User;
   //userService: UserService;
-  
+
   @ViewChild(MdPaginator) paginator: MdPaginator;
 
   constructor(private userService: UserService) {
@@ -31,11 +31,18 @@ export class UsersTabComponent implements OnInit{
         return b.user_id - a.user_id;
       });
     });
+
+    export interface UserData {
+      userId: number;
+      name: string;
+      surname: string;
+      email: string;
+    }
   }
 
   ngOnInit() {
     this.dataSource = new UsersDataSource(this.usersDatabase, this.paginator);
-     console.log(this.users);
+    console.log(this.users);
     // console.log(this.dataSource);
     //this.userService.getAllUsers();
   }
@@ -65,8 +72,8 @@ export class UsersDatabase {
   // } 
 
   constructor(userService: UserService) {
-    userService.getAllUsers().subscribe(data =>this.dataChange.next(data));
-   }
+    userService.getAllUsers().subscribe(data => this.dataChange.next(data));
+  }
 
   // ngOnInit() {
   //   this.getAllUsers();
@@ -85,7 +92,7 @@ export class UsersDataSource extends DataSource<User> {
     super();
   }
 
-  connect(): Observable<User[]> { 
+  connect(): Observable<User[]> {
     const displayDataChanges = [
       this._usersDatabase.dataChange,
       this._paginator.page
@@ -99,4 +106,5 @@ export class UsersDataSource extends DataSource<User> {
     })
   }
   disconnect() { }
+  
 }

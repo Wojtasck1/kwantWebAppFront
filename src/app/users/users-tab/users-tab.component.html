@@ -9,7 +9,7 @@
     <!-- ID Column -->
     <ng-container cdkColumnDef="userId">
       <md-header-cell *cdkHeaderCellDef md-sort-header> ID </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.userId}} </md-cell>
+      <md-cell *cdkCellDef="let row"> {{row.user.userId}} </md-cell>
     </ng-container>
 
     <!-- name Column -->
@@ -36,7 +36,7 @@
     </ng-container> -->
 
     <!-- icon Column -->
-    <ng-container cdkColumnDef="Actions">
+    <ng-container cdkColumnDef="actions">
       <md-header-cell *cdkHeaderCellDef> Actions </md-header-cell>
       <md-cell *cdkCellDef="let row">
         <button (click)="onEditClick()"><md-icon>border_color</md-icon></button>
