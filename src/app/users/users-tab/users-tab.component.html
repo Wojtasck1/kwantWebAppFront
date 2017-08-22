@@ -1,55 +1,48 @@
 <div class="example-container mat-elevation-z8">
-  <md-progress-spinner *ngIf="!users" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
-  </md-progress-spinner>
   <md-table #table [dataSource]="dataSource" mdSort>
-
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
     <!-- ID Column -->
-    <ng-container cdkColumnDef="userId">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> ID </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.user.userId}} </md-cell>
+    <ng-container cdkColumnDef="shiftDate">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Shift Date </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.shiftDate}} </md-cell>
     </ng-container>
 
-    <!-- name Column -->
-    <ng-container cdkColumnDef="name">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Name </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.name}} </md-cell>
+    <!-- Progress Column -->
+    <ng-container cdkColumnDef="swipeIn">
+      <md-header-cell *cdkHeaderCellDef md-sort-header> Swipe In </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.swipeIn}}% </md-cell>
     </ng-container>
 
-    <!-- surname Column -->
-    <ng-container cdkColumnDef="surname">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Surname </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.surname}} </md-cell>
+    <!-- Name Column -->
+    <ng-container cdkColumnDef="swipeOut">
+      <md-header-cell *cdkHeaderCellDef> Swipe Out </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.swipeOut}} </md-cell>
     </ng-container>
 
-    <!-- surname Column -->
-    <ng-container cdkColumnDef="email">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Email </md-header-cell>
-      <md-cell *cdkCellDef="let row"> {{row.email}} </md-cell>
-    </ng-container>
     <!-- Color Column -->
-    <!-- <ng-container cdkColumnDef="color">
-      <md-header-cell *cdkHeaderCellDef md-sort-header> Color </md-header-cell>
-      <md-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.color}} </md-cell>
-    </ng-container> -->
+    <ng-container cdkColumnDef="duration">
+      <md-header-cell *cdkHeaderCellDef>Duration</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.duration}} </md-cell>
+    </ng-container>
 
-    <!-- icon Column -->
-    <ng-container cdkColumnDef="actions">
-      <md-header-cell *cdkHeaderCellDef> Actions </md-header-cell>
-      <md-cell *cdkCellDef="let row">
-        <button (click)="onEditClick()"><md-icon>border_color</md-icon></button>
-        <button (click)="onDescClick()"><md-icon>description</md-icon></button>
-        <button (click)="onDeleteClick()"><md-icon>delete</md-icon></button>
-      </md-cell>
+
+    <!-- Color Column -->
+    <ng-container cdkColumnDef="status">
+      <md-header-cell *cdkHeaderCellDef>Status</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.status}} </md-cell>
     </ng-container>
 
     <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-    <md-row *cdkRowDef="let row; columns: DisplayedColumns;"></md-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
   </md-table>
 
-
-  <md-paginator #paginator [length]="usersDatabase.data.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    <md-paginator #paginator
+                [length]="exampleDatabase.data.length"
+                [pageIndex]="0"
+                [pageSize]="25"
+                [pageSizeOptions]="[5, 10, 25, 100]">
   </md-paginator>
+
 </div>
