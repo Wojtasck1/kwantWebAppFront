@@ -32,12 +32,6 @@ export class UsersTabComponent implements OnInit {
       });
     });
 
-    export interface UserData {
-      userId: number;
-      name: string;
-      surname: string;
-      email: string;
-    }
   }
 
   ngOnInit() {
