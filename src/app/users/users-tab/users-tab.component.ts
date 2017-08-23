@@ -27,6 +27,8 @@ export class UsersTabComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
   }
+
+  
 }
 
 export interface attendanceData {

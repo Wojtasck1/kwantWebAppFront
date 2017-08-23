@@ -8,6 +8,7 @@ import { TasksComponent } from './tasks.component';
 import { TasksTabComponent } from './tasks-tab/tasks-tab.component'
 import { TasksTopComponent } from './tasks-top/tasks-top.component'; 
 import { TasksRoutingModule } from './tasks-routing.module';
+import { TaskService } from './shared/task.service';
 
 import { HttpModule } from '@angular/http';
 import { DataSource } from '@angular/cdk';
@@ -19,11 +20,14 @@ import { CdkTableModule } from '@angular/cdk';
 @NgModule({
   imports: [
     TasksRoutingModule,
-    CdkTableModule,
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    ReactiveFormsModule,
+    MdTableModule,
     MdSortModule,
     MdIconModule,
-    MdTableModule,
-    HttpModule,
+    CdkTableModule,
   ],   
   declarations: [
     TaskDetailComponent,
@@ -32,6 +36,7 @@ import { CdkTableModule } from '@angular/cdk';
   entryComponents: [
   ],
   providers: [
+    TaskService
   ]
 })
 

@@ -59,6 +59,7 @@ export class HeroListComponent {
 
   seeHeroDetails(hero) {
     if (hero.default) {
+      console.log(hero);
       this.router.navigate([AppConfig.routes.heroes + '/' + hero.id]);
     }
   }

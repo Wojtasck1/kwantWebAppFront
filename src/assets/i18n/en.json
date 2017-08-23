@@ -19,6 +19,8 @@
     "newHero": "New hero"
   },
   "heroPower": "Hero power",
+  "carList": "Car list",
+  "seeCarDetailsButton": "See car Details",
   "details": "details",
   "saveHero": "Save hero",
   "createNewHero": "Create new hero",

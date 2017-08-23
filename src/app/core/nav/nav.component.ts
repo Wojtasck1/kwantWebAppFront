@@ -35,13 +35,13 @@ export class NavComponent {
   } 
 
   private loadMenus(): void {
-    this.translateService.get(['home', 'heroesList', 'cars', 'tasks' , 'users'], {}).subscribe((texts: string) => {
+    this.translateService.get(['home', 'heroesList', 'carsTab', 'tasksTab' , 'usersTab'], {}).subscribe((texts: string) => {
       this.menuItems = [
         {link: '/', name: texts['home']},
         {link: '/' + AppConfig.routes.heroes, name: texts['heroesList']},
-        {link: '/' + AppConfig.routes.cars, name: texts['cars']},
-        {link: '/' + AppConfig.routes.tasks, name: texts['tasks']}, 
-        {link: '/' + AppConfig.routes.users, name: texts['users']}
+        {link: '/' + AppConfig.routes.cars, name: texts['carsTab']},
+        {link: '/' + AppConfig.routes.tasks, name: texts['tasksTab']}, 
+        {link: '/' + AppConfig.routes.users, name: texts['usersTab']}
       ];
     });
   }
