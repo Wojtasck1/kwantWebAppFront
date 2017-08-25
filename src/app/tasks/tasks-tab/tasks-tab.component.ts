@@ -2,7 +2,8 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Task } from './../shared/task.model';
 import { TaskService } from './../shared/task.service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { AppConfig } from '../../config/app.config';
 
 @Component({
   selector: 'app-tasks-tab',
@@ -16,17 +17,19 @@ export class TasksTabComponent implements OnInit {
   @ViewChild('form') myNgForm;
 
   constructor(private taskService: TaskService,
-              private router: Router,) {
+    private router: Router, ) {
 
     this.taskService.getAllTasks().subscribe((tasks) => {
       this.tasks = tasks.sort((a, b) => {
-        return b.task_Id = a.task_Id;
+        return b.taskId - a.taskId;
       })
     })
   }
-  seeTasDetails(task){
-    console.log(task)
+
+  seeTasDetails(task) {
+    this.router.navigate([AppConfig.routes.tasks + '/' + task.taskId]);
   }
+
   ngOnInit() {
   }
 }

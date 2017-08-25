@@ -18,6 +18,12 @@
   "hero-create-new": {
     "newHero": "Nuevo heroe"
   },
+  "course": "course",
+  "overview": "overview",
+  "insurance": "insurance",
+  "description": "description",
+  "lastOilChange": "Last oil Change",
+
   "heroPower": "Poder del heroe",
   "details": "info",
   "saveHero": "Guardar heroe",

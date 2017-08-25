@@ -6,7 +6,7 @@
         <md-list>
             <md-list-item *ngFor="let car of cars">
                 <img md-list-avatar src="assets/images/cars/default.png">
-                <h3 md-line [ngClass]="{'cp': true}"> {{car.plates}} </h3>
+                <h3 md-line [ngClass]="{'cp': true}"> {{car.name}} </h3>
                 <p md-line [ngClass]="{'cp': true}">
                     <span>{{car.description}}</span>
                 </p>

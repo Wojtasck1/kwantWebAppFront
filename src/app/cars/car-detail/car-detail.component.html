@@ -1,3 +1,65 @@
-<p>
-  car-detail works!
-</p>
+<div>
+  <md-progress-spinner *ngIf="!car" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
+  </md-progress-spinner>
+  <div id="heroe-detail" *ngIf="car">
+    <ng-container>
+      <md-card>
+        <md-card-title>
+          <h1>Car Details {{car.plates}}</h1>
+        </md-card-title>
+        <td>
+          {{'course' | translate}}
+        </td>
+        <td>
+          <md-input-container class="example-full-width">
+            <input mdInput placeholder="First name">
+          </md-input-container>
+        </td>
+        <tr>
+          <td>
+            {{'overview' | translate}}
+          </td>
+          <md-input-container class="example-full-width">
+            <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+            <button mdSuffix [mdDatepickerToggle]="picker"></button>
+          </md-input-container>
+          <md-datepicker touchUi="true" #picker></md-datepicker>
+        </tr>
+        <tr>
+          <td>
+            {{'insurance' | translate}}
+          </td>
+          <md-input-container class="example-full-width">
+            <input mdInput [mdDatepicker]="picker1" placeholder="Choose a date">
+            <button mdSuffix [mdDatepickerToggle]="picker1"></button>
+          </md-input-container>
+          <md-datepicker #picker1 touchUi="true"></md-datepicker>
+        </tr>
+        <tr>
+          <td>
+            {{'description' | translate}}
+          </td>
+          <td>
+            <md-input-container class="example-full-width">
+              <input mdInput placeholder="{{car.description}}">
+            </md-input-container>
+            <!-- {{car.description}} -->
+          </td>
+        </tr>
+        <tr>
+          <td>
+
+            {{'lastOilChange' | translate}}
+          </td>
+          <td>
+            <md-input-container class="example-full-width">
+              <input mdInput placeholder="{{car.lastOilChange}}">
+            </md-input-container>
+          </td>
+        </tr>
+        <button md-raised-button (click)="info(car)">{{ 'seeCarDetailsButton' | translate }}</button>
+      </md-card>
+
+    </ng-container>
+  </div>
+</div>

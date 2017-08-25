@@ -28,7 +28,7 @@ export class CarService {
               @Inject(APP_CONFIG) private appConfig: IAppConfig) {
     this.request$ = new EventEmitter();
 
-    this.carsUrl = this.appConfig.endpoints.tasks;
+    this.carsUrl = this.appConfig.endpoints.cars;
     this.headers = new HttpHeaders({'Content-Type': 'application/json'});
 
     this.translateService.get(['heroCreated', 'saved', 'heroLikeMaximum', 'heroRemoved'], {
@@ -46,5 +46,15 @@ export class CarService {
         return response;
       })
       .catch(this.handleError);
+    }
+
+    getHeroById(carId: string): Observable<Car> {
+      this.request$.emit('starting');
+      return this.http.get(this.carsUrl + '/' + carId)
+        .map(response => {
+          this.request$.emit('finished');
+          return response;
+        })
+        .catch(this.handleError);
     }
 }

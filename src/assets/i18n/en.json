@@ -18,6 +18,12 @@
   "hero-create-new": {
     "newHero": "New hero"
   },
+  "course": "course",
+  "overview": "overview",
+  "insurance": "insurance",
+  "description": "description",
+  "lastOilChange": "Last oil Change",
+
   "heroPower": "Hero power",
   "carList": "Car list",
   "seeCarDetailsButton": "See car Details",

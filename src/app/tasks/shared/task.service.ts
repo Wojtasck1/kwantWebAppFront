@@ -18,6 +18,8 @@ export class TaskService {
   private tasksUrl: string;
   private translations: any;
 
+  results: string[];
+
   private handleError(error: any): Promise<any> {
     this.request$.emit('finished');
     return Promise.reject(error.message || error);
@@ -29,7 +31,7 @@ export class TaskService {
     @Inject(APP_CONFIG) private appConfig: IAppConfig) {
     this.request$ = new EventEmitter();
 
-    this.tasksUrl = this.appConfig.endpoints.cars;
+    this.tasksUrl = this.appConfig.endpoints.tasks;
     //this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     // this.translateService.get(['heroCreated', 'saved', 'heroLikeMaximum', 'heroRemoved'], {
@@ -39,13 +41,24 @@ export class TaskService {
     // });
   }
 
-  getAllTasks(): Observable<any[]> {
+  getAllTasks(): Observable<Task[]> { 
     this.request$.emit('starting');
     return this.http.get(this.tasksUrl)
       .map(response => {
         this.request$.emit('finished');
+        console.log(response);
         return response;
       })
       .catch(this.handleError);
+  }
+
+  getTask(taskId: string): Observable<Task>{
+    this.request$.emit('starting');
+    return this.http.get(this.tasksUrl + '/' + taskId)
+    .map(response => {
+      this.request$.emit('finished');
+      return response;
+    })
+    .catch(this.handleError);
   }
 }

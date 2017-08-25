@@ -14,6 +14,7 @@ import { DataSource } from '@angular/cdk';
 import { MdTableModule } from '@angular/material';
 import { MdSortModule, MdIconModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk';
+import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -26,6 +27,9 @@ import { CdkTableModule } from '@angular/cdk';
     MdSortModule,
     MdIconModule,
     CdkTableModule,
+    MaterialModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   declarations: [
     CarsComponent,
