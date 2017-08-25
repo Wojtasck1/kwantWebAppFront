@@ -7,13 +7,15 @@ export let APP_CONFIG = new OpaqueToken('app.config');
 export const AppConfig: IAppConfig = {
   routes: {
     heroes: 'heroes',
-    tasks: 'tasks',
     cars: 'cars',
+    tasks: 'tasks',
     users: 'users',
   }, 
   endpoints: { 
     heroes: 'https://nodejs-example-app.herokuapp.com/heroes', 
     users: 'http://localhost:8080/api/v1/users/',
+    tasks: 'http://localhost:8080/api/v1/tasks',
+    cars: 'http://localhost:8080/api/v1/cars/',
 
   },
   votesLimit: 3,
