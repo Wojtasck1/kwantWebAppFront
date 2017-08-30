@@ -16,7 +16,6 @@ import { MdTableModule } from '@angular/material';
 import { MdSortModule, MdIconModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
-// import { ViewChild } from '@angular/core';
 import { UserService } from './../users/shared/user.service';
 import * as moment from 'moment';
 
@@ -34,7 +33,6 @@ import * as moment from 'moment';
     MaterialModule,
     MdDatepickerModule,
     MdNativeDateModule,
-    // ViewChild,
   ],
   declarations: [
     CarsComponent,

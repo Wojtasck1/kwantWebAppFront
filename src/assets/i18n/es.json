@@ -27,6 +27,8 @@
   "checkInsuranceTooltip": "Check car Insurance",
 
   "heroPower": "Poder del heroe",
+  "carList": "Car list",
+  "taskList": "Task list",
   "details": "info",
   "saveHero": "Guardar heroe",
   "createNewHero": "Crear nuevo heroe",

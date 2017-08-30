@@ -44,16 +44,11 @@ export class CarDetailComponent implements OnInit {
   // @ViewChild(MdDatepicker) overviewdatePicker: MdDatepicker<Date>;
 
   editCar(car , course , insurancedatePicker , overviewdatePicker , description , lastOilChange){
-    console.log(course);
-    console.log(moment(insurancedatePicker).format('YYYY MM DD'));
-    console.log(moment(overviewdatePicker).format('YYYY MM DD'));
-
-    console.log(description);
-    console.log(lastOilChange); 
-    console.log(car.carId); 
-    this.carService.editCar(car , course , moment(insurancedatePicker).format('X') , moment(overviewdatePicker).format('X') , description , lastOilChange);
+    console.log(moment.isDate(insurancedatePicker));//moment().isDate(insurancedatePicker));
+    console.log(moment(overviewdatePicker).format('MM DD YYYY'));
+    this.carService.editCar(car , course ,  moment(insurancedatePicker).format('X'), moment(overviewdatePicker).format('X') , description , lastOilChange);
   } 
-  info(car) {
+  info(car) { 
     console.log(car);
 
     var insurancedate = moment(car.insurance).toISOString();

@@ -1,1 +1,17 @@
-<h1>userTab component working</h1> 
+<div id="left">
+    <!-- <h2 class="section-title">{{ 'taskList' | translate }}</h2> -->
+    <div>
+        <md-progress-spinner *ngIf="!users" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
+        </md-progress-spinner>
+        <md-list>
+            <md-list-item *ngFor="let user of users">
+                <img md-list-avatar src="assets/images/users/avatar.png">
+                <h3 md-line [ngClass]="{'cp': true}"> {{user.name}} </h3>
+                <p md-line [ngClass]="{'cp': true}">
+                    <span>{{user.surname}}</span>
+                </p>
+                <button md-raised-button (click) = "seeUsersDetails(user)">{{ 'seeCarDetailsButton' | translate }}</button>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>
