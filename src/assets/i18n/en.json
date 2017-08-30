@@ -23,6 +23,8 @@
   "insurance": "insurance",
   "description": "description",
   "lastOilChange": "Last oil Change",
+  "checkOverviewTooltip": "Check car Overview",
+  "checkInsuranceTooltip": "Check car Insurance",
 
   "heroPower": "Hero power",
   "carList": "Car list",

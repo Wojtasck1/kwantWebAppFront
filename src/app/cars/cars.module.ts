@@ -9,12 +9,16 @@ import { CarsTabComponent } from './cars-tab/cars-tab.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { CarsComponent } from './cars.component';
 import { CarService } from './shared/car.service';
+import { CarNoteService} from './shared/carNote.service';
 import { HttpModule } from '@angular/http';
 import { DataSource } from '@angular/cdk';
 import { MdTableModule } from '@angular/material';
 import { MdSortModule, MdIconModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+// import { ViewChild } from '@angular/core';
+import { UserService } from './../users/shared/user.service';
+import * as moment from 'moment';
 
 @NgModule({
   imports: [
@@ -29,7 +33,8 @@ import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular
     CdkTableModule,
     MaterialModule,
     MdDatepickerModule,
-    MdNativeDateModule
+    MdNativeDateModule,
+    // ViewChild,
   ],
   declarations: [
     CarsComponent,
@@ -40,6 +45,8 @@ import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular
   ],
   providers: [
     CarService,
+    UserService,
+    CarNoteService,
   ]
 })
 export class CarsModule { }

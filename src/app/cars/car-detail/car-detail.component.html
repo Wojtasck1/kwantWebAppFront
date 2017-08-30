@@ -11,53 +11,58 @@
           {{'course' | translate}}
         </td>
         <td>
-          <md-input-container class="example-full-width">
-            <input mdInput placeholder="{{car.course}}">
+          <md-input-container class="course-full-width">
+            <input mdInput #course placeholder="{{car.course}}" value="{{car.course}}">
           </md-input-container>
         </td>
         <tr>
           <td>
             {{'overview' | translate}}
           </td>
-          <md-input-container class="example-full-width">
-            <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
-            <button mdSuffix [mdDatepickerToggle]="picker"></button>
+          <td>
+              {{overviewdate}}
+          </td>
+          <md-input-container class="overview-full-width">
+            <input mdInput #overviewdatePicker [mdDatepicker]="overviewdatePicker" placeholder="Choose a date">
+            <button mdSuffix [mdDatepickerToggle]="overviewdatePicker"></button>
           </md-input-container>
-          <md-datepicker touchUi="true" #picker></md-datepicker>
+          <md-datepicker touchUi="true" #overviewdatePicker></md-datepicker>
         </tr>
         <tr>
           <td>
             {{'insurance' | translate}}
           </td>
-          <md-input-container class="example-full-width">
-            <input mdInput [mdDatepicker]="picker1" placeholder="Choose a date">
-            <button mdSuffix [mdDatepickerToggle]="picker1"></button>
+          <td>
+            {{insurancedate}}
+          </td>
+          <md-input-container class="insurance-full-width">
+            <input mdInput #insurancedatePicker [mdDatepicker]="insurancedatePicker" placeholder="Choose a date">
+            <button mdSuffix [mdDatepickerToggle]="insurancedatePicker"></button>
           </md-input-container>
-          <md-datepicker #picker1 touchUi="true"></md-datepicker>
+          <md-datepicker #insurancedatePicker touchUi="true"></md-datepicker>
         </tr>
         <tr>
           <td>
             {{'description' | translate}}
           </td>
           <td>
-            <md-input-container class="example-full-width">
-              <input mdInput placeholder="{{car.description}}">
+            <md-input-container class="description-full-width">
+              <input mdInput #description placeholder="{{car.description}}" value="{{car.description}}">
             </md-input-container>
-            <!-- {{car.description}} -->
           </td>
         </tr>
         <tr>
           <td>
-
             {{'lastOilChange' | translate}}
           </td>
           <td>
             <md-input-container class="example-full-width">
-              <input mdInput placeholder="{{car.lastOilChange}}">
+              <input mdInput #lastOilChange placeholder="{{car.lastOilChange}}" value="{{car.lastOilChange}}">
             </md-input-container>
-          </td>
+          </td> 
         </tr>
         <button md-raised-button (click)="info(car)">{{ 'seeCarDetailsButton' | translate }}</button>
+        <button md-raised-button (click)="editCar(car , course.value ,  insurancedatePicker._selected , overviewdatePicker._selected ,   description.value , lastOilChange.value)">edit</button>
       </md-card>
 
     </ng-container>

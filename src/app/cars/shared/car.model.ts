@@ -1,11 +1,12 @@
+
 export interface Car {
     carId: number;
     plates: string;
-    insurance: number;
-    overview: number;
+    insurance: string;
+    overview: string;
     course: number;
     description: string;
-    usersId: number;
+    usersId: string;
     lastOilChange: number;
     userAverOfOilChange: boolean;
     userAverOfInsuranceExpiration: boolean;

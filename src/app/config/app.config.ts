@@ -16,6 +16,7 @@ export const AppConfig: IAppConfig = {
     users: 'http://localhost:8080/api/v1/users/',
     tasks: 'http://localhost:8080/api/v1/tasks',
     cars: 'http://localhost:8080/api/v1/cars/',
+    carNotes: 'http://localhost:8080/api/v1/carNotes/',
 
   },
   votesLimit: 3,

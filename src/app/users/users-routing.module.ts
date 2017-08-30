@@ -9,7 +9,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component'
 import {AppConfig} from '../config/app.config';
 
 
-const heroesRoutes: Routes = [
+const usersRoutes: Routes = [
   {
     path: '',
     component: UsersComponent,
@@ -22,11 +22,10 @@ const heroesRoutes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(heroesRoutes)
+    RouterModule.forChild(usersRoutes)
   ],
   exports: [
     RouterModule
-    
   ]
 })
 
