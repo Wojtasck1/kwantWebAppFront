@@ -6,7 +6,7 @@ import { UsersTopComponent } from './users-top/users-top.component';
 import { UsersTabComponent } from './users-tab/users-tab.component';
 import { UserDetailComponent } from './user-detail/user-detail.component'
  
-import {AppConfig} from '../config/app.config';
+import {AppConfig} from '../../config/app.config';
 
 
 const usersRoutes: Routes = [

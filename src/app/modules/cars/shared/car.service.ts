@@ -1,8 +1,8 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { APP_CONFIG } from '../../config/app.config';
-import { IAppConfig } from '../../config/iapp.config';
+import { APP_CONFIG } from '../../../config/app.config';
+import { IAppConfig } from '../../../config/iapp.config';
 
 import { Car } from './car.model';
 import { Observable } from 'rxjs/Observable';
@@ -58,18 +58,6 @@ export class CarService {
       .catch(this.handleError);
   }
 
-  // editCar(car: Car , course: number , insurancedatePicker: string , overviewdatePicker: string , description: string , lastOilChange: number) {
-  //   car.course = course;
-  //   car.insurance = insurancedatePicker;
-  //   car.overview =  overviewdatePicker;
-  //   car.description = description;
-  //   car.lastOilChange = lastOilChange;
-  //   console.log(this.carsUrl + car.carId);
-  //   console.log(JSON.stringify(car));
-    
-  //   return this.http
-  //     .put(this.carsUrl + '/' + car.carId, JSON.stringify(car))
-  // }
   editCar(car: Car , course: number , insurancedatePicker: string , overviewdatePicker: string , description: string , lastOilChange: number): Promise<Car> {
     const url = this.carsUrl + car.carId;
         car.course = course;

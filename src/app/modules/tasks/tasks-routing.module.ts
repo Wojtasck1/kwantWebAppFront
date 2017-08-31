@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
-import {AppConfig} from '../config/app.config';
+import {AppConfig} from '../../config/app.config';
 
 import {TasksComponent} from './tasks.component'; 
 import {TasksTabComponent} from './tasks-tab/tasks-tab.component';

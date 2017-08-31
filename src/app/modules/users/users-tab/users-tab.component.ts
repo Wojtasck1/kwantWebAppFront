@@ -4,7 +4,7 @@ import { User } from './../shared/user.model';
 import { UserService } from './../shared/user.service';
 import { MdProgressSpinnerModule } from '@angular/material';
 import { Router } from '@angular/router';
-import { AppConfig } from '../../config/app.config';
+import { AppConfig } from '../../../config/app.config';
 
 
 @Component({
@@ -31,7 +31,7 @@ export class UsersTabComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log(this.users);
+    //console.log(this.users);
   }
 
   seeUsersDetails(user){

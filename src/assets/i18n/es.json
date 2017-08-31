@@ -10,7 +10,9 @@
   "orange": "Naranja",
   "yellow": "Amarillo",
   "cyan": "Cian",
-  "name": "Nombre",
+  "name": "Name",
+  "surname": "Surname",
+  "email": "email",
   "nameRequired": "El nombre es obligatorio",
   "hero-top": {
     "title": "Top Heroes"
@@ -25,6 +27,7 @@
   "lastOilChange": "Last oil Change", 
   "checkOverviewTooltip": "Check car Overview",
   "checkInsuranceTooltip": "Check car Insurance",
+  "holidayRequest": "Holiday request",
 
   "heroPower": "Poder del heroe",
   "details": "info",

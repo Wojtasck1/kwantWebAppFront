@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Car } from './../shared/car.model';
 import { CarService } from './../shared/car.service';
 import { Router } from '@angular/router';
-import { AppConfig } from '../../config/app.config';
+import { AppConfig } from '../../../config/app.config';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry } from '@angular/material';
 import * as moment from 'moment';

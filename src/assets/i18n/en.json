@@ -11,6 +11,8 @@
   "yellow": "Yellow",
   "cyan": "Cyan",
   "name": "Name",
+  "surname": "Surname",
+  "email": "email",
   "nameRequired": "Name is required",
   "hero-top": {
     "title": "Top Heroes"
@@ -25,6 +27,7 @@
   "lastOilChange": "Last oil Change",
   "checkOverviewTooltip": "Check car Overview",
   "checkInsuranceTooltip": "Check car Insurance",
+  "holidayRequest": "Holiday request",
 
   "heroPower": "Hero power",
   "carList": "Car list",
