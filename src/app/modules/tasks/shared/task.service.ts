@@ -1,8 +1,8 @@
 import { Injectable, EventEmitter, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { APP_CONFIG } from '../../config/app.config';
-import { IAppConfig } from '../../config/iapp.config';
+import { APP_CONFIG } from '../../../config/app.config';
+import { IAppConfig } from '../../../config/iapp.config';
 import { TranslateService } from '@ngx-translate/core';
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 

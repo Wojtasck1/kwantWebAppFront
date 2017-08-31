@@ -16,8 +16,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './app.translate.factory';
 import { HeroTopComponent } from './heroes/hero-top/hero-top.component';
 import { HeroService } from './heroes/shared/hero.service';
-// import { FormatPipe } from './shared/pipe/format.pipe';
-// import { OrderByPipe } from './shared/pipe/orderBy.pipe';
+// import { FormatPipe } from './shared/pipe/format.pipe';  
+// import { OrderByPipe } from './shared/pipe/orderBy.pipe'; 
 
 @NgModule({
   imports: [

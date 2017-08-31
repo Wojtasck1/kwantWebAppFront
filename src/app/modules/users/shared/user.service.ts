@@ -1,8 +1,8 @@
 import {EventEmitter, Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {APP_CONFIG} from '../../config/app.config';
-import {IAppConfig} from '../../config/iapp.config';
+import {APP_CONFIG} from '../../../config/app.config';
+import {IAppConfig} from '../../../config/iapp.config';
 
 import {User} from './user.model';
 import {Observable} from 'rxjs/Observable';

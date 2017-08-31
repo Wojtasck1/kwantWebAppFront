@@ -1,0 +1,30 @@
+<div>
+  <md-progress-spinner *ngIf="!user" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
+  </md-progress-spinner>
+  <div id="user-detail" *ngIf="user">
+    <md-grid-list cols="2" rowHeight="2:1">
+      <md-grid-tile>
+        <div class="userIcon">
+          <img md-list-avatar src="assets/images/users/avatar.png">
+        </div>
+      </md-grid-tile>
+      <md-grid-tile>
+        <div calss="userDetails">
+          <tr>
+            <td>{{ 'name' | translate }}</td>
+            <td><h1>{{user.name}}</h1></td>
+          </tr>
+          <tr>
+            <td>{{ 'surname' | translate }}</td>
+            <td><h1>{{user.surname}}</h1></td>
+          </tr>
+          <tr>
+            <td>{{ 'email' | translate }}</td>
+            <td><h1>{{user.email}}</h1></td>
+          </tr>
+        </div>
+      </md-grid-tile>
+    </md-grid-list>
+    <button md-raised-button (click)="openDialog()">wypełnij wniosek urlopowy</button>
+  </div>
+</div>

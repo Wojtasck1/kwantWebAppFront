@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CarsRoutingModule } from './cars-routing.module';
-import { SharedModule } from '../shared/modules/shared.module';
-
+import { SharedModule } from '../../shared/modules/shared.module';
+ 
 import { CarsTabComponent } from './cars-tab/cars-tab.component';
 import { CarDetailComponent } from './car-detail/car-detail.component';
 import { CarsComponent } from './cars.component';

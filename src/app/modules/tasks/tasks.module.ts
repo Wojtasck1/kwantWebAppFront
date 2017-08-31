@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
- 
-import { SharedModule } from '../shared/modules/shared.module';
+
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+import {SharedModule} from '../../shared/modules/shared.module';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { TasksComponent } from './tasks.component';
 import { TasksTabComponent } from './tasks-tab/tasks-tab.component'

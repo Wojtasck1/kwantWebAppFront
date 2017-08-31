@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Task } from './../shared/task.model';
 import { TaskService } from './../shared/task.service';
 import { Router } from '@angular/router';
-import { AppConfig } from '../../config/app.config';
+import { AppConfig } from '../../../config/app.config';
 
 @Component({
   selector: 'app-tasks-tab',

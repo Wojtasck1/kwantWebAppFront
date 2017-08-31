@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SharedModule } from '../shared/modules/shared.module';
+import { SharedModule } from '../../shared/modules/shared.module';
 import { UsersRoutingModule } from './users-routing.module';
 import { UserService } from './shared/user.service';
 import { UsersComponent } from './users.component';
@@ -13,6 +13,8 @@ import { HttpModule } from '@angular/http';
 import { DataSource } from '@angular/cdk';
 import { MdTableModule, MdSortModule, MdIconModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk';
+import { HolidayDialogComponent } from './user-detail/holiday-dialog/holiday-dialog.component';
+
 
 @NgModule({
   imports: [
@@ -26,11 +28,16 @@ import { CdkTableModule } from '@angular/cdk';
     MdIconModule,
     CdkTableModule,
     UsersRoutingModule,
+    // HolidayDialog,
   ],
   declarations: [
     UsersComponent,
     UserDetailComponent,
     UsersTabComponent,
+    HolidayDialogComponent,
+  ],
+  entryComponents: [
+    HolidayDialogComponent
   ],
   bootstrap: [],
   providers: [
