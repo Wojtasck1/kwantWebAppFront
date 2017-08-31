@@ -2,8 +2,10 @@ import { Component, OnInit ,Inject } from '@angular/core';
 import { User } from './../shared/user.model';
 import { UserService } from './../shared/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA , MdDatepicker} from '@angular/material';
 import { HolidayDialogComponent } from './holiday-dialog/holiday-dialog.component'
+import { Holiday } from './../shared/holiday.model';
+import { HolidayService } from './../shared/holiday.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -13,6 +15,7 @@ import { HolidayDialogComponent } from './holiday-dialog/holiday-dialog.componen
 export class UserDetailComponent implements OnInit {
 
   public user: User;
+  public holidays: Holiday[];
 
   dialogResult = "";
 
@@ -20,11 +23,14 @@ export class UserDetailComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     public dialog: MdDialog,
+    private holidayService: HolidayService,
   ) {
     this.activatedRoute.params.subscribe((params: any) => {
       this.userService.getUserById(params['id']).subscribe((user) => {
         this.user = user;
-        console.log(this.user);
+        this.holidayService.getHolidayByUserId(user.userId).subscribe((holidays) =>{
+          this.holidays = holidays;
+        })
       })
     })
   }
@@ -36,39 +42,16 @@ export class UserDetailComponent implements OnInit {
 
     let dialogRef = this.dialog.open(HolidayDialogComponent , {
       width: '600px',
-      data: 'this text is passed'
+      data: this.user
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed: ${result}`);
       this.dialogResult = result;
     })
+  }
 
-    // let dialogRef = this.dialog.open(HolidayDialog, {
-    //   height: '400px',
-    //   width: '600px',
-    //   //data: { user: this.user }
-    // }
-  // );
- 
-      // dialogRef.afterClosed().subscribe(result => {
-      //   console.log('The dialog was closed');
-      // });
+  openDialog1(){
+    console.log(this.holidays);
   }
 } 
-
-// @Component({
-//   selector: 'holiday-dialog',
-//   templateUrl: 'holiday-dialog.html',
-// })
-// export class HolidayDialog {
-
-//   constructor(){}
-//     // public dialogRef: MdDialogRef<HolidayDialog>,
-//     // @Inject(MD_DIALOG_DATA) public data: any) { }
-
-//   // onNoClick(): void {
-//   //   this.dialogRef.close();
-//   // }
-
-// }

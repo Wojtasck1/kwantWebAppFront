@@ -40,9 +40,7 @@ export class CarDetailComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  // @ViewChild(MdDatepicker) overviewdatePicker: MdDatepicker<Date>;
-
+  
   editCar(car , course , insurancedatePicker , overviewdatePicker , description , lastOilChange){
     console.log(moment.isDate(insurancedatePicker));//moment().isDate(insurancedatePicker));
     console.log(moment(overviewdatePicker).format('MM DD YYYY'));

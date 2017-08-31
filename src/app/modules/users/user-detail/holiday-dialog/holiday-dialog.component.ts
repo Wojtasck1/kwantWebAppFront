@@ -1,6 +1,7 @@
 import { Component, OnInit , Inject } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
-import { MD_DIALOG_DATA } from '@angular/material';
+import { MdDialogRef , MD_DIALOG_DATA , MdDatepicker } from '@angular/material';
+import { Holiday } from './../../shared/holiday.model';
+import { HolidayService } from './../../shared/holiday.service';
 
 @Component({
   selector: 'app-holiday-dialog',
@@ -9,10 +10,16 @@ import { MD_DIALOG_DATA } from '@angular/material';
 })
 export class HolidayDialogComponent implements OnInit {
 
+  public holiday: Holiday;
+
   constructor(
     public thisDialogRef: MdDialogRef<HolidayDialogComponent>,
-    @Inject(MD_DIALOG_DATA) public data: string
-  ) { }
+    private holidayService: HolidayService,
+    @Inject(MD_DIALOG_DATA) public data: string,
+
+  ) { 
+    
+  } 
 
   ngOnInit() {
   }

@@ -75,10 +75,6 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  checkIfUserCanVote(): boolean {
-    return Number(localStorage.getItem('votes')) < this.appConfig.votesLimit;
-  }
-
   deleteUsersById(id: string): Observable<Array<User>> {
     this.request$.emit('starting');
     const url = `${this.usersUrl}/${id}`;

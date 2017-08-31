@@ -8,6 +8,7 @@ import { UserService } from './shared/user.service';
 import { UsersComponent } from './users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UsersTabComponent } from './users-tab/users-tab.component';
+import { HolidayService } from './shared/holiday.service';
 
 import { HttpModule } from '@angular/http';
 import { DataSource } from '@angular/cdk';
@@ -28,7 +29,6 @@ import { HolidayDialogComponent } from './user-detail/holiday-dialog/holiday-dia
     MdIconModule,
     CdkTableModule,
     UsersRoutingModule,
-    // HolidayDialog,
   ],
   declarations: [
     UsersComponent,
@@ -42,6 +42,7 @@ import { HolidayDialogComponent } from './user-detail/holiday-dialog/holiday-dia
   bootstrap: [],
   providers: [
     UserService,
+    HolidayService,
   ],
 
 })

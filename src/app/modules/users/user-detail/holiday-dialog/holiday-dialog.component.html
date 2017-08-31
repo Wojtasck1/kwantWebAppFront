@@ -2,14 +2,24 @@
   <h2 md-dialog-title>{{ 'holidayRequest' | translate }}</h2>
   <hr>
   <md-dialog-content>
-    costa mcostam
+    {{data.name}} {{data.surname}} prosi o urlop od
+    <!-- <md-form-field>
+      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+      <md-datepicker-toggle mdSuffix [for]="picker1"></md-datepicker-toggle>
+      <md-datepicker #picker1></md-datepicker>
+    </md-form-field> -->
+    do
+
+    <!-- <md-form-field>
+      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+      <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+      <md-datepicker #picker></md-datepicker>
+    </md-form-field> -->
+    z powodu
   </md-dialog-content>
-  <br>
-  <br>
-  <strong>{{data}}</strong>
   <hr>
-    <md-dialog-actions>
-        <button md-raised-button (click)="onCloseConfirm()">Basic</button>
-      <button md-raised-button (click)="onCloseCancel()">Basic</button>
-    </md-dialog-actions>
+  <md-dialog-actions>
+    <button md-raised-button (click)="onCloseConfirm()">Basic</button>
+    <button md-raised-button (click)="onCloseCancel()">Basic</button>
+  </md-dialog-actions>
 </div>
