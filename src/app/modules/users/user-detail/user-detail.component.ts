@@ -2,7 +2,7 @@ import { Component, OnInit ,Inject } from '@angular/core';
 import { User } from './../shared/user.model';
 import { UserService } from './../shared/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA , MdDatepicker} from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA , MdDatepicker } from '@angular/material';
 import { HolidayDialogComponent } from './holiday-dialog/holiday-dialog.component'
 import { Holiday } from './../shared/holiday.model';
 import { HolidayService } from './../shared/holiday.service';
@@ -17,7 +17,7 @@ export class UserDetailComponent implements OnInit {
   public user: User;
   public holidays: Holiday[];
 
-  dialogResult = "";
+  dialogResult = ""; 
 
   constructor(
     private userService: UserService,

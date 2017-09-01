@@ -1,25 +1,29 @@
-<div>
+<form>
   <h2 md-dialog-title>{{ 'holidayRequest' | translate }}</h2>
   <hr>
   <md-dialog-content>
-    {{data.name}} {{data.surname}} prosi o urlop od
-    <!-- <md-form-field>
-      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
-      <md-datepicker-toggle mdSuffix [for]="picker1"></md-datepicker-toggle>
-      <md-datepicker #picker1></md-datepicker>
-    </md-form-field> -->
-    do
-
-    <!-- <md-form-field>
-      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
-      <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
-      <md-datepicker #picker></md-datepicker>
-    </md-form-field> -->
-    z powodu
+    {{data.name}} {{data.surname}} prosi o urlop
+    <md-input-container>
+      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" (ngModelChange)="go()">
+      <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    </md-input-container>
+    <md-datepicker #picker [touchUi]="true"></md-datepicker>
+    od
+    <md-input-container>
+      <input mdInput [mdDatepicker]="picker1" placeholder="Choose a date" (ngModelChange)="go()">
+      <button mdSuffix [mdDatepickerToggle]="picker1"></button>
+    </md-input-container>
+    <md-datepicker #picker1 [touchUi]="true"></md-datepicker>
+    rodzaj urlopu
+    <md-select placeholder="wybierz">
+        <md-option *ngFor="let holidayType of holidayTypes" [value]="holidayType.value">
+          {{ holidayType.viewValue }}
+        </md-option>
+      </md-select>
   </md-dialog-content>
   <hr>
   <md-dialog-actions>
     <button md-raised-button (click)="onCloseConfirm()">Basic</button>
     <button md-raised-button (click)="onCloseCancel()">Basic</button>
   </md-dialog-actions>
-</div>
+</form>

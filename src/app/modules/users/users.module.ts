@@ -9,10 +9,9 @@ import { UsersComponent } from './users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UsersTabComponent } from './users-tab/users-tab.component';
 import { HolidayService } from './shared/holiday.service';
-
 import { HttpModule } from '@angular/http';
 import { DataSource } from '@angular/cdk';
-import { MdTableModule, MdSortModule, MdIconModule } from '@angular/material';
+import { MdTableModule, MdSortModule, MdIconModule , MdDatepickerModule , MaterialModule , MdNativeDateModule} from '@angular/material';
 import { CdkTableModule } from '@angular/cdk';
 import { HolidayDialogComponent } from './user-detail/holiday-dialog/holiday-dialog.component';
 
@@ -29,6 +28,9 @@ import { HolidayDialogComponent } from './user-detail/holiday-dialog/holiday-dia
     MdIconModule,
     CdkTableModule,
     UsersRoutingModule,
+    MdDatepickerModule,
+    MaterialModule,
+    MdNativeDateModule,
   ],
   declarations: [
     UsersComponent,
