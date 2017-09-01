@@ -10,6 +10,7 @@ import {FooterComponent} from './footer/footer.component';
 import {SharedModule} from '../shared/modules/shared.module';
 import {RouterModule} from '@angular/router';
 import {SearchBarComponent} from './search-bar/search-bar.component';
+import { SideNavComponent } from './nav/side-nav/side-nav.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {SearchBarComponent} from './search-bar/search-bar.component';
   declarations: [
     NavComponent,
     FooterComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    SideNavComponent
   ],
   providers: [
     LoggerService
