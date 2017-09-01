@@ -2,20 +2,20 @@
   <h2 md-dialog-title>{{ 'holidayRequest' | translate }}</h2>
   <hr>
   <md-dialog-content>
-    {{data.name}} {{data.surname}} prosi o urlop
+    {{data.name}} {{data.surname}} prosi o urlop od 
     <md-input-container>
-      <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" (ngModelChange)="go()">
+      <input class="md-datapicker" mdInput [mdDatepicker]="picker" placeholder="Choose a date" (ngModelChange)="go()">
       <button mdSuffix [mdDatepickerToggle]="picker"></button>
     </md-input-container>
     <md-datepicker #picker [touchUi]="true"></md-datepicker>
-    od
+    do
     <md-input-container>
-      <input mdInput [mdDatepicker]="picker1" placeholder="Choose a date" (ngModelChange)="go()">
+      <input class="md-datapicker" mdInput [mdDatepicker]="picker1" placeholder="Choose a date" (ngModelChange)="go()">
       <button mdSuffix [mdDatepickerToggle]="picker1"></button>
     </md-input-container>
     <md-datepicker #picker1 [touchUi]="true"></md-datepicker>
     rodzaj urlopu
-    <md-select placeholder="wybierz">
+    <md-select class="md-option" placeholder="wybierz">
         <md-option *ngFor="let holidayType of holidayTypes" [value]="holidayType.value">
           {{ holidayType.viewValue }}
         </md-option>
@@ -23,7 +23,7 @@
   </md-dialog-content>
   <hr>
   <md-dialog-actions>
-    <button md-raised-button (click)="onCloseConfirm()">Basic</button>
-    <button md-raised-button (click)="onCloseCancel()">Basic</button>
+    <button md-raised-button class="button" (click)="onCloseConfirm(data , picker._selected , picker1._selected)">Zatwierdż</button>
+    <button md-raised-button class="button" (click)="onCloseCancel()">odrzuć</button>
   </md-dialog-actions>
 </form>

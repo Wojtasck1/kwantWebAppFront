@@ -6,6 +6,7 @@ import { MdDialog, MdDialogRef, MD_DIALOG_DATA , MdDatepicker } from '@angular/m
 import { HolidayDialogComponent } from './holiday-dialog/holiday-dialog.component'
 import { Holiday } from './../shared/holiday.model';
 import { HolidayService } from './../shared/holiday.service';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-user-detail',
@@ -24,6 +25,7 @@ export class UserDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     public dialog: MdDialog,
     private holidayService: HolidayService,
+    private snackBar: MdSnackBar
   ) {
     this.activatedRoute.params.subscribe((params: any) => {
       this.userService.getUserById(params['id']).subscribe((user) => {
@@ -38,8 +40,13 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialog(): void {
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 
+  openDialog(): void {
     let dialogRef = this.dialog.open(HolidayDialogComponent , {
       width: '600px',
       data: this.user
@@ -47,6 +54,7 @@ export class UserDetailComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed: ${result}`);
+      this.openSnackBar("wiadomość", "Akcja")
       this.dialogResult = result;
     })
   }

@@ -58,14 +58,15 @@ export class HolidayService {
             .catch(this.handleError);
     }
 
-    createUsers(user: any): Observable<Holiday> {
+    createHoliday(holiday: any): Observable<Holiday> {
         this.request$.emit('starting');
         return this.http
             .post(this.holidayUrl, JSON.stringify({
-                name: user.name,
-                surname: user.surname,
-                email: user.email,
-
+                userId: holiday.userId,
+                holidayType: holiday.holidayType,
+                createDate: holiday.createDate + "000",
+                beginDate: holiday.beginDate,
+                endDate: holiday.endDate
             }), { headers: this.headers })
             .map(response => {
                 this.request$.emit('finished');

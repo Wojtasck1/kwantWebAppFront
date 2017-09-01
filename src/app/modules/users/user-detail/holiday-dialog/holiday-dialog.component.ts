@@ -1,7 +1,8 @@
-import { Component, OnInit , Inject } from '@angular/core';
-import { MdDialogRef , MD_DIALOG_DATA , MdDatepicker , MdDialog} from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MdDialogRef, MD_DIALOG_DATA, MdDatepicker, MdDialog } from '@angular/material';
 import { Holiday } from './../../shared/holiday.model';
 import { HolidayService } from './../../shared/holiday.service';
+import * as moment from 'moment';
 
 
 
@@ -14,36 +15,52 @@ export class HolidayDialogComponent implements OnInit {
 
   public holiday: Holiday;
 
+  public type: string;
+
   constructor(
+    // public holiday: Holiday,
     public thisDialogRef: MdDialogRef<HolidayDialogComponent>,
     private holidayService: HolidayService,
-    @Inject(MD_DIALOG_DATA) public data: string,
-  ) { 
-    
-  } 
+    @Inject(MD_DIALOG_DATA) public data: any,
+  ) {
+
+  }
 
   holidayTypes = [
-    {value: 'steak-0', viewValue: 'Urlop bezpłatny'},
-    {value: 'pizza-1', viewValue: 'Urlop okolicznościowy'},
-    {value: 'tacos-2', viewValue: 'Urlop na żadanie'},
-    {value: 'tacos-2', viewValue: 'Urlop nad dzieckiem'},
-    {value: 'tacos-2', viewValue: 'Urlop ojcowski'},
-    {value: 'tacos-2', viewValue: 'Urlop macierzyński'},
-    {value: 'tacos-2', viewValue: 'Urlop rodzicielski'},
-    {value: 'tacos-2', viewValue: 'Urlop wychowawczy'},
-    {value: 'tacos-2', viewValue: 'Urlop na poszukiwanie pracy'},
-    {value: 'tacos-2', viewValue: 'Urlop szkoleniowy'}
+    { value: this.type = "Urlop bezpłatny", viewValue: 'Urlop bezpłatny' },
+    { value: this.type = "Urlop okolicznościowy", viewValue: 'Urlop okolicznościowy' },
+    { value: this.type = "Urlop na żadanie", viewValue: 'Urlop na żadanie' },
+    { value: this.type = "Urlop nad dzieckiem", viewValue: 'Urlop nad dzieckiem' },
+    { value: this.type = "Urlop ojcowski", viewValue: 'Urlop ojcowski' },
+    { value: this.type = "Urlop macierzyński", viewValue: 'Urlop macierzyński' },
+    { value: this.type = "Urlop rodzicielski", viewValue: 'Urlop rodzicielski' },
+    { value: this.type = "Urlop wychowawczy", viewValue: 'Urlop wychowawczy' },
+    { value: this.type = "Urlop na poszukiwanie pracy", viewValue: 'Urlop na poszukiwanie pracy' },
+    { value: this.type = "Urlop szkoleniowy", viewValue: 'Urlop szkoleniowy' }
   ];
 
   ngOnInit() {
-    
+
   }
 
-  onCloseConfirm() {
+  onCloseConfirm( brgin , end) {
     this.thisDialogRef.close('Confirm');
+    console.log(this.data.userId);
+    console.log(this.holiday);
+    console.log(this.type);
+    console.log(moment().format("X"));
+    console.log(moment(brgin).format("X"));
+    console.log(moment(end).format("X"));
+    // this.holiday.userId = this.data.userId;
+    // this.holiday.holidayType = this.type;
+    // this.holiday.createDate =  moment().format("X");
+
+    // this.holiday.beginDate = 
+    // this.holiday.endDate = 
+    // this.holidayService.createHoliday(this.holiday);
 
   }
- 
+
   onCloseCancel() {
     this.thisDialogRef.close('Cancel');
   }

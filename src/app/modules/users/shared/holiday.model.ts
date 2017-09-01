@@ -8,4 +8,4 @@ export interface Holiday {
     decisionDate: string;
     beginDate: string;
     endDate: string;
-  } 
+  }
