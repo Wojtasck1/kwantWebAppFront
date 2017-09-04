@@ -26,7 +26,7 @@ export class CarNoteService {
               private translateService: TranslateService,
               private snackBar: MdSnackBar,
               @Inject(APP_CONFIG) private appConfig: IAppConfig) {
-    this.request$ = new EventEmitter();
+    this.request$ = new EventEmitter(); 
 
     this.carsNotesUrl = this.appConfig.endpoints.carNotes;
     this.headers = new HttpHeaders({'Content-Type': 'application/json'});

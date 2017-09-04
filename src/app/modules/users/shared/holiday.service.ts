@@ -8,6 +8,7 @@ import { Holiday } from './holiday.model';
 import { Observable } from 'rxjs/Observable';
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
+import * as moment from 'moment';
 
 @Injectable()
 export class HolidayService {
@@ -60,13 +61,14 @@ export class HolidayService {
 
     createHoliday(holiday: any): Observable<Holiday> {
         this.request$.emit('starting');
+        console.log("inside service");
         return this.http
             .post(this.holidayUrl, JSON.stringify({
                 userId: holiday.userId,
                 holidayType: holiday.holidayType,
-                createDate: holiday.createDate + "000",
-                beginDate: holiday.beginDate,
-                endDate: holiday.endDate
+                createDate: moment().format("X") + "000",
+                beginDate: moment(holiday.beginDate).format("X") + "000",
+                endDate: moment(holiday.endDate).format("X") + "000"
             }), { headers: this.headers })
             .map(response => {
                 this.request$.emit('finished');

@@ -59,17 +59,15 @@ export class CarService {
   }
 
   editCar(car: Car , course: number , insurancedatePicker: string , overviewdatePicker: string , description: string , lastOilChange: number): Promise<Car> {
-    this.request$.emit('starting');
     const url = this.carsUrl + car.carId;
-    console.log(url);
-    car.course = course;
+        car.course = course;
     car.insurance = insurancedatePicker + "000";
     car.overview =  overviewdatePicker + "000";
     car.description = description;
     car.lastOilChange = lastOilChange;
     console.log(JSON.stringify(car));
     return this.http
-      .put(url, JSON.stringify(car))//, {headers: this.headers})
+      .put(url, JSON.stringify(car), {headers: this.headers})
       .toPromise()
       .then(() => car)
       .catch(this.handleError);

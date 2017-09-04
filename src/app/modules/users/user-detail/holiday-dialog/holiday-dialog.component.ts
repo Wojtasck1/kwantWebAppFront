@@ -24,11 +24,12 @@ export class HolidayDialogComponent implements OnInit {
   constructor(
     public thisDialogRef: MdDialogRef<HolidayDialogComponent>,
     private holidayService: HolidayService,
-    private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder, 
     @Inject(MD_DIALOG_DATA) public data: any,
   ) {
 
     this.newHolidayForm = this.formBuilder.group({
+      'userId': [this.data.userId, [Validators.required]],
       'holidayType': ['', [Validators.required]],
       'beginDate': ['', [Validators.required]],
       'endDate': ['', [Validators.required]]
