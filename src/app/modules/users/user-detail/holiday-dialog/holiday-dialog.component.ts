@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject , ViewChild} from '@angular/core';
 import { MdDialogRef, MD_DIALOG_DATA, MdDatepicker, MdDialog } from '@angular/material';
 import { Holiday } from './../../shared/holiday.model';
 import { HolidayService } from './../../shared/holiday.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
 
 
@@ -13,18 +14,30 @@ import * as moment from 'moment';
 })
 export class HolidayDialogComponent implements OnInit {
 
-  public holiday: Holiday;
+  public newHolidayForm: FormGroup;
 
   public type: string;
 
+  error: string;
+  @ViewChild('form') myNgForm; 
+
   constructor(
-    // public holiday: Holiday,
     public thisDialogRef: MdDialogRef<HolidayDialogComponent>,
     private holidayService: HolidayService,
+    private formBuilder: FormBuilder,
     @Inject(MD_DIALOG_DATA) public data: any,
   ) {
 
+    this.newHolidayForm = this.formBuilder.group({
+      'holidayType': ['', [Validators.required]],
+      'beginDate': ['', [Validators.required]],
+      'endDate': ['', [Validators.required]]
+    });
+    
+    //console.log(this.holiday);
   }
+
+  
 
   holidayTypes = [
     { value: this.type = "Urlop bezpłatny", viewValue: 'Urlop bezpłatny' },
@@ -43,21 +56,36 @@ export class HolidayDialogComponent implements OnInit {
 
   }
 
-  onCloseConfirm( brgin , end) {
+  createNewHoliday(newHoliday){
+    this.holidayService.createHoliday(newHoliday).subscribe((newHolidayWithId) => {
+      this.myNgForm.resetForm();
+    }, (response) => {
+      if (response.status === 500) {
+        this.error = 'errorHasOcurred';
+      }
+    });
+  }
+
+  onCloseConfirm( begin , end) {
     this.thisDialogRef.close('Confirm');
     console.log(this.data.userId);
-    console.log(this.holiday);
+    //console.log(this.holiday);
     console.log(this.type);
     console.log(moment().format("X"));
-    console.log(moment(brgin).format("X"));
+    console.log(moment(begin).format("X"));
     console.log(moment(end).format("X"));
-    // this.holiday.userId = this.data.userId;
-    // this.holiday.holidayType = this.type;
-    // this.holiday.createDate =  moment().format("X");
 
-    // this.holiday.beginDate = 
-    // this.holiday.endDate = 
-    // this.holidayService.createHoliday(this.holiday);
+    // var holiday = new Holiday(
+    //   this.data.userId,
+    //   this.type,
+    //   moment().format("X"),
+    //   moment(begin).format("X"),
+    //   moment(end).format("X")
+    //  );
+
+   //  console.log(this.newHoliday)
+
+    // this.holidayService.createHoliday(holiday);
 
   }
 
