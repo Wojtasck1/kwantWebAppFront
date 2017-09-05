@@ -34,8 +34,6 @@ export class HolidayDialogComponent implements OnInit {
       'beginDate': ['', [Validators.required]],
       'endDate': ['', [Validators.required]]
     });
-    
-    //console.log(this.holiday);
   }
 
   
@@ -70,23 +68,10 @@ export class HolidayDialogComponent implements OnInit {
   onCloseConfirm( begin , end) {
     this.thisDialogRef.close('Confirm');
     console.log(this.data.userId);
-    //console.log(this.holiday);
     console.log(this.type);
     console.log(moment().format("X"));
     console.log(moment(begin).format("X"));
     console.log(moment(end).format("X"));
-
-    // var holiday = new Holiday(
-    //   this.data.userId,
-    //   this.type,
-    //   moment().format("X"),
-    //   moment(begin).format("X"),
-    //   moment(end).format("X")
-    //  );
-
-   //  console.log(this.newHoliday)
-
-    // this.holidayService.createHoliday(holiday);
 
   }
 
