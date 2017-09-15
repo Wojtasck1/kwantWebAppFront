@@ -33,11 +33,14 @@ export class CarsTabComponent implements OnInit {
   }
 
   checkInsurance(car): boolean {
-    return moment(moment(car.insurance).toISOString()).isBefore(moment().subtract(7, 'd').toISOString());
+    return moment(moment(car.insurance).toISOString()).isAfter(moment().subtract(7, 'd').toISOString());
   }
   
   checkOverview(car): boolean {
-    return moment(moment(car.overview).toISOString()).isBefore(moment().subtract(7, 'd').toISOString());
+    console.log(car.plates);
+    console.log(moment(car.overview).toISOString())
+    console.log(moment().subtract(7, 'd').toISOString())
+    return moment(moment(car.overview).toISOString()).isAfter(moment().subtract(7, 'd').toISOString());
   }
 
   checkOil(car): boolean {
